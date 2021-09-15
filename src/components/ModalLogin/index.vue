@@ -36,7 +36,7 @@
         <span class="text-lg font-medium text-gray-800">Senha</span>
         <input
           v-model="state.password.value"
-          type="email"
+          type="text"
           :class="{ 'border-brand-danger': !!state.password.errorMessage }"
           class="
             block

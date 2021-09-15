@@ -3,7 +3,7 @@ export function validateEmptyAndLength3 (value) {
     return '*Este campo é obrigatório'
   }
 
-  if (!value.length < 3) {
+  if (value.length < 3) {
     return '*Este campo precisa de no minimo 3 caracteres'
   }
 
