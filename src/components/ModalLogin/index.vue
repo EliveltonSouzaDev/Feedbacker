@@ -62,7 +62,7 @@
         :disabled="state.isLoading"
         type="submit"
         :class="{
-          'opacity-50': state.isLoading,
+          'opacity-50': state.isLoading
         }"
         class="
           px-8
@@ -78,7 +78,8 @@
           duration-150
         "
       >
-        Entrar
+        <Icon v-if="state.isLoading"  name="Loading" class="animate-spin" />
+        <span v-else> Entrar</span>
       </button>
     </form>
   </div>
@@ -89,20 +90,25 @@ import { reactive } from 'vue'
 import { useField } from 'vee-validate'
 import { useToast } from 'vue-toastification'
 import useModal from '../../hooks/useModal'
-import { validateEmptyAndLength3, validateEmptyAndEmail } from '../../utils/validators'
+import Icon from '../Icon'
+import {
+  validateEmptyAndLength3,
+  validateEmptyAndEmail
+} from '../../utils/validators'
 import services from '../../services'
 import { useRouter } from 'vue-router'
 
 export default {
+  components: { Icon },
   setup () {
     const router = useRouter()
     const modal = useModal()
     const toast = useToast()
 
-    const {
-      value: emailValue,
-      errorMessage: emailErrorMessage
-    } = useField('email', validateEmptyAndEmail)
+    const { value: emailValue, errorMessage: emailErrorMessage } = useField(
+      'email',
+      validateEmptyAndEmail
+    )
 
     const {
       value: passwordValue,
@@ -160,10 +166,7 @@ export default {
       handleSubmit
     }
   }
-
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
